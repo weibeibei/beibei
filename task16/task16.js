@@ -14,19 +14,27 @@ function addAqiData() {
 	//对城市名称的输入进行校验
 	if(city==""){
 		alert("城市不能为空~");
+		document.getElementById("city").focus();
+		return;
 	}else{
 		var patt1=/^[\u4e00-\u9fa5a-zA-Z]+$/;
 		if(!patt1.test(city)){
 			alert("城市名称必须为中英文字符~");
+			document.getElementById("city").focus();
+			return;
 		}
 	}
 	//对空气质量指数的输入进行校验
 	if(air==""){
 		alert("空气质量指数不能为空~");
+		document.getElementById("air").focus();
+		return;
 	}else{
 		var patt2=/^\d+$/;
 		if(!patt2.test(air)){
 			alert("空气质量指数必须为整数~");
+			document.getElementById("air").focus();
+			return;
 		}
 	}
 	//将新填写的数据添加到数据列表中
@@ -36,7 +44,7 @@ function addAqiData() {
 
 
 //渲染aqi-table表格
-
+ 
 function renderAqiList() {
 	var content="",tbody="";
 	for(var city in aqiData){
@@ -53,7 +61,6 @@ function renderAqiList() {
  */
 function add() {
   addAqiData();
-
   renderAqiList();
 }
 
