@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>任务18</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		input{
+			margin-bottom: 20px;
+		}
+		#content{
+			list-style: none;
+			font-size: 16px;
+		}
+		ul li{
+			display: inline-block;
+			padding: 5px 5px;
+			border: 2px solid red;
+			margin-right: 15px;
+			float: left;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<label for="num">请输入数字：</label>
+	<input type="text" name="num" id="num">
+	<br/>
+	<div id="options">
+		<button id="leftIn">左侧入</button>
+		<button id="rightIn">右侧入</button>
+		<button id="leftOut">左侧出</button>
+		<button id="rightOut">右侧出</button>
+	</div>
+	<ul id="content"></ul>
+
+<script type="text/javascript" src="task18.js"></script>
+</body>
+</html>
