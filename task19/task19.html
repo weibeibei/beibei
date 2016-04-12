@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>任务19</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		input{
+			margin-bottom: 20px;
+		}
+		#content{
+			list-style: none;
+			font-size: 16px;
+			overflow: hidden;
+		}
+		#content li{
+			display: inline-block;
+			padding: 5px 5px;
+			border: 2px solid red;
+			margin-right: 15px;
+			float: left;
+			cursor: pointer;
+		}
+		#bubble{
+			width: 90%;
+			height: 400px;
+			margin: 20px 0;
+			display: flex;
+			display:-webkit-flex;
+			flex-flow: row nowrap;
+			justify-content:center;
+			align-items: flex-end;
+			border:1px solid black;
+			border-radius: 10px;
+			box-shadow: 10px 10px 10px #888;
+		}
+		.flex-item{
+			width: 20px;
+			background-color: red;
+			border: 1px solid black;
+			list-style: none;
+		}
+	
+	</style>
+</head>
+<body>
+	<label for="num">请输入数字：</label>
+	<input type="text" name="num" id="num">
+	<br/>
+	<div id="options">
+		<button id="leftIn">左侧入</button>
+		<button id="rightIn">右侧入</button>
+		
+	</div>
+	<button id="bubbleSort" style="margin-top:20px;">冒泡排序</button>
+	<ul id="content"></ul>
+	<ul id="bubble"></ul>
+
+<script type="text/javascript" src="task19.js"></script>
+</body>
+</html>
