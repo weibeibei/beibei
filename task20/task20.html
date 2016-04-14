@@ -51,8 +51,7 @@
 
 	//对输入的字符串进行拆分的函数
 	function tagSplit(key){
-		var arr=[];
-		return arr=key.split(/[^a-zA-Z0-9\u4e00-\u9fa5]+|\s+/).filter(function(e){
+		return key.split(/[^a-zA-Z0-9\u4e00-\u9fa5]+|\s+/).filter(function(e){
 			if(e==""){
 				return false;				
 			}
