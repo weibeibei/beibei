@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>任务20</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		button{
+			font-size: 16px;
+		}
+		ul li{
+			list-style: none;
+			float: left;
+			padding: 5px 5px;
+			background-color: #46A3FF;
+			margin: 10px 10px;
+			color: white;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<fieldset>
+		<legend>输入内容</legend>
+		<textarea id="num" name="num" rows="6" cols="50" placeholder="请输入汉字、英语字母或者数字"></textarea><br>
+		<button id="insert" style="margin-top:10px;">插入</button>
+	</fieldset>
+	<fieldset>
+		<legend>查询匹配</legend>
+		<input type="text" id="quCon" name="quCon">
+		<button id="query">查询</button>
+	</fieldset>
+	
+	
+	<ul style="margin:20px 0;padding:0;overflow:hidden;" id="content"></ul>
+	
+
+<script type="text/javascript">
+
+	var val=document.getElementById("num").value.trim(),
+		queryVal=document.getElementById("quCon").value.trim();
+
+	//文本框获取焦点时将内容全选
+	document.getElementById("num").addEventListener("focus",function(){
+		document.getElementById("num").select();
+	});
+
+	//输入内容前后去空格处理
+	String.prototype.trim=function(){
+		return this.replace(/^(\s|\u00A0)+/,'').replace(/(\s|\u00A0)+$/,'');
+	}
+
+	//对输入的字符串进行拆分的函数
+	function tagSplit(key){
+		var arr=[];
+		return arr=key.split(/[^a-zA-Z0-9\u4e00-\u9fa5]+|\s+/).filter(function(e){
+			if(e==""){
+				return false;				
+			}
+			else{
+				return true;		
+			}
+
+		});
+	}
+	
+
+	document.getElementById("insert").addEventListener("click",function(){	
+		var body="",content=[];		
+		//以除汉字、英文大小写字母、数字之外的所有字符为分割符；
+		//由于汉字的编码中好像包含回车所以单独增加一个\s空表字符来匹配；
+		//spilt函数的返回值是一个字符串数组
+		//content=val.split(/[^a-zA-Z0-9\u4e00-\u9fa5]+|\s+/);
+		//渲染内容
+		content=tagSplit(val);
+		for(var i=0;i<content.length;i++){
+			body+="<li>"+content[i]+"</li>";
+		}
+		document.getElementById("content").innerHTML=body;
+		
+	});
+
+
+	document.getElementById("query").addEventListener("click",function(){
+		var content=[], find = false;
+		
+		content=tagSplit(val);
+		var pattern=new RegExp(queryVal,"g");
+
+		for(var i=0;i<content.length;i++){
+			if(pattern.test(content[i])){
+				//将匹配到的内容标红，fontcolor() 方法用于按照指定的颜色来显示字符串，String对象的方法
+				document.getElementById("content").innerHTML=document.getElementById("content").innerHTML.replace(pattern,function(v){
+					return v.fontcolor("red");
+				});
+
+				//另一种写法
+				//document.getElementById("content").innerHTML=document.getElementById("content").innerHTML.replace(pattern,"<font color=red>"+queryVal+"</font>");  
+	
+				find = true;
+			}		
+		}
+		if(!find){
+			alert("没有找到匹配的内容~");
+		}
+	
+		
+	});
+</script>
+</body>
+</html>
